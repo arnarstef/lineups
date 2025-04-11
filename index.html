@@ -5,8 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+  
+    <script>
+      const imageInput = document.getElementById('imageInput');
+      const preview = document.getElementById('preview');
+      const output = document.getElementById('base64Output');
+  
+      imageInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (!file) return;
+  
+        const reader = new FileReader();
+  
+        reader.onload = function (e) {
+          const base64 = e.target.result;
+          preview.src = base64;
+          preview.style.display = 'block';
+          output.value = base64;
+        };
+  
+        reader.readAsDataURL(file);
+      });
+    </script>
+    <script>
+
+        /*const lineups = {
+            {
+                'map': 'Ancient',
+                'image'
+            }
+        }*/
+    </script>
 </head>
 <body>
-    test
+
+    <h2>Select an image:</h2>
+    <input type="file" id="imageInput" accept="image/*">
+    <p><strong>Preview:</strong></p>
+    <img id="preview" width="200" style="display:none;">
+    <p><strong>Base64 URL:</strong></p>
+    <textarea id="base64Output" rows="10" cols="80" readonly></textarea>
 </body>
 </html>
