@@ -5,28 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-  
-    <script>
-      const imageInput = document.getElementById('imageInput');
-      const preview = document.getElementById('preview');
-      const output = document.getElementById('base64Output');
-  
-      imageInput.addEventListener('change', function () {
-        const file = this.files[0];
-        if (!file) return;
-  
-        const reader = new FileReader();
-  
-        reader.onload = function (e) {
-          const base64 = e.target.result;
-          preview.src = base64;
-          preview.style.display = 'block';
-          output.value = base64;
-        };
-  
-        reader.readAsDataURL(file);
-      });
-    </script>
     <script>
 
         /*const lineups = {
@@ -45,5 +23,29 @@
     <img id="preview" width="200" style="display:none;">
     <p><strong>Base64 URL:</strong></p>
     <textarea id="base64Output" rows="10" cols="80" readonly></textarea>
+
+    
+  
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const preview = document.getElementById('preview');
+        const output = document.getElementById('base64Output');
+    
+        imageInput.addEventListener('change', function () {
+          const file = this.files[0];
+          if (!file) return;
+    
+          const reader = new FileReader();
+    
+          reader.onload = function (e) {
+            const base64 = e.target.result;
+            preview.src = base64;
+            preview.style.display = 'block';
+            output.value = base64;
+          };
+    
+          reader.readAsDataURL(file);
+        });
+      </script>
 </body>
 </html>
